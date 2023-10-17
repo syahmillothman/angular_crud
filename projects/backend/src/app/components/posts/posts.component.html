@@ -1,0 +1,64 @@
+<div class="container-fluid px-4 mb-4 mt-4">
+    <div class="row">
+      <h3>Categories</h3>
+      <p-table [value]="posts" dataKey="id" responsiveLayout="scroll" class="table-bordered">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Title</th>
+            <th>Contenct</th>
+            <th>Category</th>
+            <th>Slug</th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+          <tr>
+            <td [pEditableColumn]="product" [pEditableColumnField]="'title'" [pEditableColumnRowIndex]="rowIndex">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="product.title">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{product.title}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="product" [pEditableColumnField]="'description'" [pEditableColumnRowIndex]="rowIndex">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="product.content" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{product.content}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="product" [pEditableColumnField]="'description'" [pEditableColumnRowIndex]="rowIndex">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="product.category.title" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{product.category.title}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td [pEditableColumn]="product" [pEditableColumnField]="'description'" [pEditableColumnRowIndex]="rowIndex">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="product.slug" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{product.slug}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td class="text-center">
+              <i class="pi pi-trash text-danger cursor-pointer" (click)="remove(rowIndex, product.id)"></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div> 
+</div>   
+  
